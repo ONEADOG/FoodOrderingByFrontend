@@ -1,0 +1,20 @@
+
+<div class="flex max-h-full h-full card  bg-base-100 shadow-xl " *ngIf="food" >
+  <img class="h-64 w-64" [src]="food.foodImage" alt="Movie" />
+  <div class="card-body">
+    <div class="flex justify-between">
+      <h2 class="card-title">{{food.foodName}}</h2>
+      <h2 class="card-title">{{food.foodQty}}</h2>
+    </div>
+    <div class="flex justify-between">
+      <p>หมวดหมู่: </p>{{food.foodType}}
+    </div>
+    <div class="flex justify-between"> <label for="">จำนวน</label>
+      <input class="input input-bordered  max-w-xs h-5" type="number"[(ngModel)]="food.desiredQty" min="1" value="1" placeholder="1">
+    </div>
+    <div class="card-actions justify-end">
+
+      <button class="btn btn-primary" (click)="addToCart()">เพิ่มลงในตระกร้า</button>
+    </div>
+  </div>
+</div>

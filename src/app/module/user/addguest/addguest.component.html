@@ -1,0 +1,14 @@
+
+<form class="mt-6  justify-center items-center text-center" [formGroup]="formaddguest" (ngSubmit)="Onsubmit()">
+    <h1 class="text-3xl mb-6">เข้าใช้งานโต้ะ: {{ data.tableName }}</h1>
+<label class="mb-3 text-xl">จำนวนลูกค้า</label><br>
+<input type="number" class="input input-bordered input-warning input-md text-center text-xl mt-3 mb-4" formControlName="guestQty" placeholder="กรุณากรอกจำนวนลูกค้า" required><br>
+<label class="mb-3 text-xl">โปรโมชั่น</label><br>
+<select class="input input-bordered input-warning input-md text-center text-xl mt-3 mb-4" name="guestPromotion" formControlName="guestPromotion" ><br>
+    <option value="179" >179 บาท</option>
+    <option value="239">239 บาท</option>
+</select><br>
+<label class="mb-3 text-xl">หมายเลขโต๊ะ</label><br>
+<input class=" cursor-not-allowed text-center text-xl mt-3 mb-4" type="text" value="{{ data.tableName }}" placeholder="{{ data.tableName }}" disabled  /><br>
+<button type="submit" class="btn btn-success mt-6 text-white font-thin btn-md w-20 text-xl">ยืนยัน</button>
+</form>

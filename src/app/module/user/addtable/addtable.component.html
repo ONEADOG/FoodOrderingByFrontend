@@ -1,0 +1,12 @@
+<h1 class="text-2xl text-center mt-3" >เพิ่มโต๊ะ</h1>
+<form class="mt-6  justify-center items-center text-center" [formGroup]="formTable" (ngSubmit)="Onsubmit()" >
+   <label class="text-xl" for="tableName">ชื่อหรือหมายเลขโต๊ะ</label><br>
+   <input class="input input-bordered input-warning  input-xs text-center mt-3 mb-3" type="text" formControlName="tableName"><br>
+   <!-- <label class="text-xl" for="guestQty">ลูกค้า</label><br>
+   <input class="input input-bordered input-warning  input-xs text-center mt-3 mb-3" type="number" name="" id="" formControlName="guestQty"><br> -->
+   <!-- <label class="text-xl" for="promotion"></label><br>
+   <input class="input input-bordered input-warning  input-xs text-center mt-3 mb-3" type="number" formControlName="promotion"><br> -->
+   <label class="text-xl" for="tableStatus">สถานะโต๊ะ</label><br>
+   <select class="input input-bordered input-warning  input-xs text-center" name="" id="" formControlName="tableStatus"><option value="1">ว่าง</option><option value="2">ไม่ว่าง</option></select><br>
+   <button class="btn w-16 btn-success text-center text-white font-thin mt-4" type="submit">ยืนยัน</button>
+</form>

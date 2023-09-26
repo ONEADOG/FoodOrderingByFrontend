@@ -1,0 +1,251 @@
+<body class=" bg-blue-100">
+
+
+    <aside id="separator-sidebar"
+        class="fixed top-0 left-0  z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
+        aria-label="Sidebar">
+        <div class="h-full px-3 py-4 overflow-y-auto bg-white dark:bg-gray-800 shadow-md">
+            <ul class="space-y-2 font-medium" *ngIf="user">
+                <li>
+                    <div class="flex justify-center text-2xl ">
+                        <h1>Foodorder</h1>
+
+                    </div>
+                    <div class="flex justify-center text-xl p-2" *ngIf="">
+                        <h2>เคาร์นเตอร์</h2>
+                    </div>
+                    <div class="flex avatar justify-center pt-4 pb-4 ">
+                        <div class="shadow-md w-20 rounded-full ring ring-success ring-offset-base-100 ring-offset-2">
+                            <img src="{{user.userImage}}" />
+                        </div>
+
+                    </div>
+                    <div class="flex justify-center pb-2">
+                        <p>{{user.firstName}}</p>
+                    </div>
+                    <a href="/user"
+                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                            viewBox="0 0 22 21">
+                            <path
+                                d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z" />
+                            <path
+                                d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z" />
+                        </svg>
+                        <span class="ml-3">Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <!-- <a (click)="Report()"
+                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier">
+                                <path opacity="0.5"
+                                    d="M18.7491 9V9.7041C18.7491 10.5491 18.9903 11.3752 19.4422 12.0782L20.5496 13.8012C21.5612 15.3749 20.789 17.5139 19.0296 18.0116C14.4273 19.3134 9.57274 19.3134 4.97036 18.0116C3.21105 17.5139 2.43882 15.3749 3.45036 13.8012L4.5578 12.0782C5.00972 11.3752 5.25087 10.5491 5.25087 9.7041V9C5.25087 5.13401 8.27256 2 12 2C15.7274 2 18.7491 5.13401 18.7491 9Z"
+                                    fill="#1C274C"></path>
+                                <path
+                                    d="M7.24316 18.5454C7.8941 20.5506 9.77767 22.0002 11.9998 22.0002C14.222 22.0002 16.1055 20.5506 16.7565 18.5454C13.611 19.1357 10.3886 19.1357 7.24316 18.5454Z"
+                                    fill="#1C274C"></path>
+                            </g>
+                        </svg>
+                        <span class="flex-1 ml-3 whitespace-nowrap">ออกรายงาน</span>
+                        <span
+                            class="inline-flex items-center justify-center px-2 ml-3 text-sm font-medium text-white bg-red-600  rounded-full dark:bg-gray-700 dark:text-gray-300">1</span>
+                    </a> -->
+                </li>
+                <div class="overflow-y-auto h-60 w-60 bg-white cursor-default rounded-xl border  border-gray-600">
+                    <div class="card-title p-3">
+                        <h1>พนักงาน</h1>
+                    </div>
+                    <div class="my-1 bg-gray-600 h-[1px]"></div>
+                    <ul *ngFor="let user of listUser">
+                        <li *ngIf="user.userStatus == 1" class="inline-block mt-1 ">
+                            <div class="flex p-2 ">
+                                <div class="avatar w-6 h-6 ">
+                                    <div class="rounded-full"><img src="{{user.userImage}}" alt=""></div>
+                                </div>
+                                <div class="ml-1">{{user.firstName}}</div>
+                                <div class="ml-1">{{user.lastName}}</div>
+                                <div class=" ml-2">{{user.userType}}</div>
+                            </div>
+                           
+                        </li>
+                    </ul>
+                </div>
+
+                <li>
+                    <a 
+                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                            viewBox="0 0 20 20">
+                            <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.96 2.96 0 0 0 .13 5H5Z" />
+                            <path
+                                d="M6.737 11.061a2.961 2.961 0 0 1 .81-1.515l6.117-6.116A4.839 4.839 0 0 1 16 2.141V2a1.97 1.97 0 0 0-1.933-2H7v5a2 2 0 0 1-2 2H0v11a1.969 1.969 0 0 0 1.933 2h12.134A1.97 1.97 0 0 0 16 18v-3.093l-1.546 1.546c-.413.413-.94.695-1.513.81l-3.4.679a2.947 2.947 0 0 1-1.85-.227 2.96 2.96 0 0 1-1.635-3.257l.681-3.397Z" />
+                            <path
+                                d="M8.961 16a.93.93 0 0 0 .189-.019l3.4-.679a.961.961 0 0 0 .49-.263l6.118-6.117a2.884 2.884 0 0 0-4.079-4.078l-6.117 6.117a.96.96 0 0 0-.263.491l-.679 3.4A.961.961 0 0 0 8.961 16Zm7.477-9.8a.958.958 0 0 1 .68-.281.961.961 0 0 1 .682 1.644l-.315.315-1.36-1.36.313-.318Zm-5.911 5.911 4.236-4.236 1.359 1.359-4.236 4.237-1.7.339.341-1.699Z" />
+                        </svg>
+                        <span (click)="logOut()" class="flex-1 ml-3 whitespace-nowrap">Log out</span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </aside>
+
+    <div class="bg-blue-100 p-4 sm:ml-64 sm:mr-64 lg:ml-64 lg:mr-56">
+        <div class="flex  mr-80 justify-between">
+            <h1>สถานะโต๊ะ: ว่าง=🟢 กำลังใช้งาน=🔴 กำลังชำระเงิน=🟡 ชำระเงินสำเร็จ=✅</h1><button class="btn btn-sm btn-success"
+                (click)=" showaddTable()">เพิ่มโต๊ะ</button>
+        </div>
+        <ul *ngFor="let table of listTable" class="inline-block m-2 ">
+            <li>
+                <!-- <a *ngIf="table.tableStatus >= 2" (click)="onGetId(table.tableName)"></a> -->
+                    <div class=" card w-40 h-48 bg-base-100 shadow-xl"><button class="absolute btn-success btn-xs text-white cursor-pointer" *ngIf="table.tableStatus == 1"  (click)="addguest(table.tableName)"> เข้าใช้งานโต้ะ </button> <button class="absolute btn-warning btn-xs text-white cursor-pointer" *ngIf="table.tableStatus >= 2" (click)="onGetId(table)">แก้ไขข้อมูล</button>
+                        <div class="absolute right-0 flex justify-end"><span (click)="onDelete(table)"
+                                class="text-red-600 cursor-pointer">x</span></div>
+                        <div class="card-body items-center ">
+                            <div class="">
+                                <h2 class="card-title">🪑 โต๊ะ {{table.tableName}}</h2>
+                            </div><h2 class="flex text-center">รหัสลูกค้า</h2>
+                            <div class=" ">
+                                <input class="text-center w-20  border-2 border-blue-300" type="text" name="" value="{{table.ordersId}}" placeholder="{{table.ordersId}}" disabled >
+                            </div>
+                           
+                            <div class="flex">
+                                <h2>สถานะโต๊ะ</h2>
+                                <div class="ml-1" *ngIf="table.tableStatus == 1">🟢</div>
+                                <div class="ml-1" *ngIf="table.tableStatus == 2">🔴</div>
+                                <div class="ml-1" *ngIf="table.tableStatus == 3">🟡</div>
+                                <div class="ml-1" *ngIf="table.tableStatus == 4">✅</div>
+                            </div>
+                        </div>
+                    </div>
+               
+            </li>
+        </ul>
+    </div>
+
+    <aside id="separator-sidebar"
+        class="fixed top-0 right-0 z-40 w-80 h-screen transition-transform -translate-x-full sm:translate-x-0"
+        aria-label="Sidebar">
+        <div class="h-full px-3 py-4 overflow-y-auto bg-white dark:bg-gray-800 shadow-md">
+            <ul class="space-y-2 font-medium">
+                <li>
+                    <div class="flex justify-center text-2xl">
+                        <h1>จัดการโต๊ะ</h1>
+
+                    </div>
+
+                    <div class="flex justify-center pb-2">
+                    </div>
+
+
+                </li>
+                <div class="card w-72 max-h-max  bg-white shadow-lg  text-info-content">
+                    <div class="card-body p-2 h-3/4"*ngIf="orders">
+                        <h2 class="card-title justify-center text-center text-2xl font-thin">ข้อมูลโต๊ะ</h2>
+                        <li *ngIf="table"><button
+                                class="absolute top-10 right-1 btn btn-xs btn-info text-white font-thin text-sm"
+                                (click)="Cleartable()">
+                                เคลียร์                                 <svg fill="#000000" class="h-5 w-5" viewBox="0 0 32 32" id="icon" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><defs><style>.cls-1{fill:none;}</style></defs><title>reset--alt</title><path d="M27,8H6.83l3.58-3.59L9,3,3,9l6,6,1.41-1.41L6.83,10H27V26H7V19H5v7a2,2,0,0,0,2,2H27a2,2,0,0,0,2-2V10A2,2,0,0,0,27,8Z"></path><rect id="_Transparent_Rectangle_" data-name="<Transparent Rectangle>" class="" ></rect></g></svg>
+
+                            </button>
+                            <div class="flex justify-between text-xl mt-3 mb-3"  >
+                                <h2>หมายเลขโต๊ะ:{{table.tableName}} </h2>
+
+                            </div><div class="my-1 bg-gray-600 h-[1px]  mt-3 mb-3"></div>
+                            <div class="flex text-xl mt-1">
+                                <h2 >รหัสลูกค้า: {{table.ordersId}} </h2>
+                                </div>
+                                <div class="my-1 bg-gray-600 h-[1px] mt-3 mb-3"></div>
+                                <div class="flex items-center text-2xl">จำนวนลูกค้า : {{orders.guestQty}}</div>
+                             <div class="flex items-center" >
+                                    <label class="text-xs ">แก้ไขจำนวนลูกค้า :</label><input type="number" placeholder=" {{orders.guestQty}}"  class="input input-bordered w-24 h-7 max-w-xs text-xs ml-1" [(ngModel)]="newGuestQty" />
+                                    <button (click)="UpdateGuestQty()" class="ml-1 btn btn-warning btn-xs ">แก้ไข</button>
+                            </div> 
+                            <div class="my-1 bg-gray-600 h-[1px] mt-3 mb-3"></div>
+                            <div class="text-xl mt-2">
+                                <div class="text-2xl">โปรโมชั่น : {{orders.guestPromotion}}</div>
+                                
+                                <div class="flex items-center" >
+                                    <label class="text-xs ">แก้ไขโปรโมทชั่น :</label><input type="number" placeholder=" {{orders.guestPromotion}}" class="input input-bordered w-24 h-7 max-w-xs text-xs ml-1" [(ngModel)]="newPromotion" />
+                                    <button (click)="UpdatePromotion()" class="ml-1 btn btn-warning btn-xs ">แก้ไข</button>
+                                </div><div class="my-1 bg-gray-600 h-[1px] mt-3 mb-3"></div>
+                            </div>
+                            <div class=""><h1 class="text-2xl">ยอดรวม : {{orders.totalPrice}}</h1></div>
+                            <div class="my-1 bg-gray-600 h-[1px] mt-3 mb-3"></div>
+                            <div class=" mt-1">
+                                <h2 class="flex">สถานะ:
+                                    <div class="ml-1" *ngIf="table.tableStatus == 1">🟢</div>
+                                    <div class="ml-1" *ngIf="table.tableStatus == 2">🔴</div>
+                                    <div class="ml-1" *ngIf="table.tableStatus == 3">🟡</div>
+                                    <button class="btn btn-xs btn-error ml-2 text-white font-thin"
+                                        (click)="UpdateTable(2,0)">กำลังใช้งาน</button>
+                                    <button class="btn btn-xs btn-success ml-1 text-white font-thin"
+                                        (click)="UpdateTableStatus(1)">ว่าง</button> <button class="btn btn-xs btn-primary ml-1 text-white font-thin"
+                                        (click)="UpdateTableStatus(4)">ยืนยันการชำระ</button>
+                                    <!-- <input type="checkbox" class="toggle"  checked (change)="togleupdateStatus($event.target.checked)"/>                            -->
+                                </h2>
+                            </div><div class="my-1 bg-gray-600 h-[1px] mt-3 mb-3"></div>
+                            <h1 class="mb-8">ชำระค่าบริการ</h1>
+                           
+                            <!-- <div  class="w-52 h-7 rounded-lg border border-gray-500 mt-2 " >s</div> -->
+                        </li>
+                        <div class="relative   bottom-0 right-2 ">
+                            <a *ngIf="paymentdata" (click)="OnGetpayment(paymentdata.tableName)">
+                                <div  class="mt-2 w-56 max-w-xs h-10 border-2 border-gray-300 rounded-lg shadow-md pb-5"><h1>ข้อมูลการชำระ</h1></div></a>
+                        </div>
+                        <!-- <qrcode qrdata="{{orders.sourcesforQr}}" [width]="20" [errorCorrectionLevel]="'M'"></qrcode> -->
+                        <div class="" #pdfContent>
+                            <h2 class="flex justify-center mb-1">หมายเลขโต๊ะ:{{table.tableName}} </h2>
+                            <h2 class="ml-2 mb-1">รหัสลูกค้า: {{table.ordersId}} </h2>
+                           <h2 class="ml-2 mb-1"> โปรโมชั่น : {{orders.guestPromotion}}</h2>
+                           
+                           <h2 class="ml-2  mb-1">เข้าใช้งานโต้ะเมื่อ : </h2>
+                           <h2 class="ml-2  mb-1">{{orders.orderDate |date:'วันที่ : dd/MM/yyyy เวลา : HH:mm:ss'}}</h2>
+                            <qrcode class="flex justify-center" qrdata="{{orders.sourcesforQr}}" [width]="20" [errorCorrectionLevel]="'M'"></qrcode>
+                            
+                        </div>
+                          
+                         <button class="btn btn-primary text-2xl" (click)="createPDF()">ออกบิล</button> 
+                         
+                    </div>
+                  
+                </div> 
+                <!-- <li *ngIf="table">
+                    <div class="flex justify-between">
+                        <h2>หมายเลขโต๊ะ:{{table.tableName}} </h2>
+                    <button class="btn btn-xs btn-info text-white font-thin text-sm" (click)="Cleartable()">เคลียร์♻</button>
+                    </div>
+                    <div class="">
+                        <h2>ลูกค้า:{{table.guestQty}}</h2>
+                    </div>
+                    <div class="">
+                        <h2>โปรโมชั่น:{{table.promotion}}</h2>
+                    </div>
+                    <div class="">
+                        <h2 class="flex">สถานะโต๊ะ:
+                            <div class="ml-1" *ngIf="table.tableStatus == 1">🟢</div>
+                            <div class="ml-1" *ngIf="table.tableStatus == 2">🔴</div>
+                            <div class="ml-1" *ngIf="table.tableStatus == 3">🟡</div>
+                            <button class="btn btn-xs btn-error ml-2 text-white font-thin" (click)="UpdateTableStatus(2)">ไม่ว่าง</button>
+                            <button class="btn btn-xs btn-success ml-2 text-white font-thin" (click)="UpdateTableStatus(1)">ว่าง</button>
+                        </h2>
+                    </div>
+
+                </li> -->
+
+                <li>
+
+                </li>
+            </ul>
+           
+
+        </div>
+    </aside>
+     
+</body>

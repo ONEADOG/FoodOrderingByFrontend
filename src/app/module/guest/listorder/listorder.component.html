@@ -1,0 +1,23 @@
+<h1 class="flex justify-center mt-2 text-2xl ">ประวัติการสั่งอาหาร</h1>
+<div class="" >
+   <table class="table">
+    <thead class="bg-white">
+      <tr>
+      <th scope="col">No.</th>
+      <th scope="col">รายละเอียดคำสั่งซื้อ</th>
+      <th scope="col">สั่งเมื่อ</th>
+      <th scope="col">หมายเหตุ</th>
+      <th scope="col">สถานะ</th></tr>
+    </thead>
+    <tbody *ngFor="let list of listorder;  let i = index;" class="bg-white">
+     <td>{{i+1}}</td>
+     <td>{{list.orderDetail}}</td>
+     <td>{{list.orderDate | date: 'HH:mm:ss' }}</td>
+     <td *ngIf="list.orderNote != null"><h2 > {{list.orderNote}}</h2></td>
+     <td><h2 *ngIf="list.orderNote == null">ไม่มี</h2></td>
+     <td *ngIf="list.orderStatus == 2"><button class="btn btn-success text-white btn-xs font-thin">สำเร็จ</button></td>
+     <td *ngIf="list.orderStatus == 1"><button class="btn btn-warning text-white btn-xs font-thin">กำลังเตรียม</button></td>
+
+    </tbody>
+   </table>
+</div>

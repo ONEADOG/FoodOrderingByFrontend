@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+*{
+    font-family: 'Itim', cursive;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    outline: none;
+    
+    /* text-transform: capitalize; */
+    /* transition: all 0.2s linear; */
+}
+html, body{ height: 100%; scroll-behavior: smooth;    font-family: 'Itim', cursive;}
+body { margin: 0;  }
+html ::-webkit-scrollbar{
+   display: none;
+}
+

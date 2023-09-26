@@ -1,0 +1,43 @@
+<div class="navbar bg-white sticky top-0 justify-center" >
+  <!-- <div class="navbar-start">
+    <div class="dropdown">
+      <label tabindex="0" class="btn btn-ghost btn-circle">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
+        </svg>
+      </label>
+      <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+        <li><a>Homepage</a></li>
+        <li><a>Portfolio</a></li>
+        <li><a>About</a></li>
+      </ul>
+    </div>
+  </div> -->
+  <div class="navbar-center" >
+    <a routerLink="../table" class="btn btn-ghost normal-case text-xl">Foodorder</a>
+  </div>
+</div>
+<div > <!-- ตรวจสอบว่า tabledata มีค่าหรือไม่ -->
+<p>ตระกร้า!</p>
+</div>
+  <button class=" btn btn-success "  *ngIf="cart.items.length >= 2" (click)=" clearCart()">เคลียร์ตระกร้า </button>
+
+<div class="absolute  card-body w-full rounded-sm  ">
+<div class="flex "*ngFor="let itemcart of cart.items ">
+  <div class="w-24 h-24 "><img class="rounded-md bordered border-r-8 border-red-500" src="{{itemcart.food.foodImage}}" alt=""></div>
+    <div class="flex m-2 ">{{itemcart.food.foodName}}<h2 class="ml-5 ">{{itemcart.food.foodQty}}</h2></div>
+    <!-- <select  class=" input border h-5  " #quantitySelect (change)="changeQuantity(itemcart,quantitySelect.value)">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+
+    </select> -->
+    <input class="input input-bordered max-w-xs h-5" type="number" [(ngModel)]="itemcart.food.desiredQty" min="1">
+<button class="btn btn-error text-white font-thin" (click)="removeFromCart(itemcart.food.foodId)">ลบ</button></div>
+ <div class="text-end  py-1 px-1 " > จำนวนอาหาร : {{getTotalCartQuantity()}}</div>
+ <button *ngIf="cart.items.length >= 1" class="btn btn-success" type="submit" (click)="Onsubmit()">บันทึกลงในตาราง order</button></div>

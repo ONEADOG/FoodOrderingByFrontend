@@ -1,0 +1,120 @@
+<div class="navbar bg-white sticky top-0" >
+  <!-- <div class="navbar-start">
+    <div class="dropdown">
+      <label tabindex="0" class="btn btn-ghost btn-circle">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
+        </svg>
+      </label>
+      <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+        <li><a>Homepage</a></li>
+        <li><a>Portfolio</a></li>
+        <li><a>About</a></li>
+      </ul>
+    </div>
+  </div> -->
+  <div class="navbar-start" >
+    <a routerLink="../table" class="btn btn-ghost normal-case text-xl">Foodorder</a>
+  </div>
+  <input class="form-control input input-bordered " type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="🔎ค้นหาเมนูที่นี่">
+  <div class="navbar-end">
+    <!-- <app-searchfood></app-searchfood> -->
+    <a >
+      <h2 class="btn btn-ghost font-thin"><em class="material-icons"><i class="fa fa-shopping-cart" aria-hidden="true"></i></em>รายการที่สั่ง</h2>
+    </a><a routerLink="./menu">
+      <h5 class="btn btn-ghost  font-thin">เมนู</h5>
+    </a>
+    <a routerLink="./payment">
+      <h5 class="btn btn-ghost  font-thin">ชำระค่าบริการ</h5>
+    </a>
+    <button class="btn btn-ghost btn-circle"  >
+      <div class="indicator">
+        <svg  xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path  stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+        </svg>
+        <span  class="w-3  badge badge-xs badge-secondary indicator-item text-white"></span>
+      </div>
+    </button>
+  </div>
+ 
+</div>
+  <aside id="separator-sidebar"
+  class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
+  aria-label="Sidebar">
+  <div class="h-full px-3 py-4 overflow-y-auto  dark:bg-gray-800" style="background-color: #FEC888;">
+      <ul class="space-y-2 font-medium" *ngIf="orders">
+          <li>
+              <div class="flex justify-center text-2xl ">
+                  <h1>Foodorder</h1>
+
+              </div>
+              <div class="flex justify-center pb-2 card-title mt-6 ">
+                  <h1>โต๊ะที่ : {{orders.tableName}}</h1>
+              </div>
+              <div class="flex justify-center text-center p-2  mt-6 card-title border-2 rounded-lg mb-3 cursor-default">
+                <h1 class="text-white text-2xl font-thin">Menu</h1>
+            </div>
+              <a (click)="filter('')"
+                  class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group cursor-pointer">
+                  <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                      aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
+                      <path
+                          d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z" />
+                      <path
+                          d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z" />
+                  </svg>
+                  <span class="ml-3 active:bg-white">ทั้งหมด</span>
+              </a>
+          </li>
+   
+          <!-- <li>
+              <a (click)="filter('เนื้อสัตว์')"
+                  class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group cursor-pointer">
+                  <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                      aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
+                      <path
+                          d="M14 2a3.963 3.963 0 0 0-1.4.267 6.439 6.439 0 0 1-1.331 6.638A4 4 0 1 0 14 2Zm1 9h-1.264A6.957 6.957 0 0 1 15 15v2a2.97 2.97 0 0 1-.184 1H19a1 1 0 0 0 1-1v-1a5.006 5.006 0 0 0-5-5ZM6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Z" />
+                  </svg>
+                  <span class="flex-1 ml-3 whitespace-nowrap">เนื้อสัตว์</span>
+                  <span
+                      class="inline-flex items-center justify-center px-2 ml-3 text-sm font-medium text-gray-800 bg-yellow-400  rounded-full dark:bg-gray-700 dark:text-gray-300">Pro</span>
+              </a>
+          </li> -->
+          <li *ngFor="let type of listtype" class="cursor-pointer flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+           <a (click)="filter(type)" >  <span class="flex-1 ml-3 whitespace-nowrap">{{type.foodType}}</span></a>
+          </li>
+      </ul>
+
+  </div>
+</aside>
+
+
+
+<div class=" p-4 sm:ml-64 sm:mr-36 lg:ml-64 mr-32  md:mr-32 ml-32" >
+
+  <ul *ngFor="let food of filterfood | customFilter : searchText " class="inline-block m-2 ">
+      <li><a  class="cursor-pointer" (click)=" showdatafood(food.foodId)">
+              <div class=" card w-52  bg-base-100 shadow-xl">
+                  <div class="card-body ">
+                      <img class="cursor-pointer rounded-md w-" src="{{food.foodImage}}" alt="food" />
+                     <div class="flex justify-between ">
+                       <h2 class="" >
+                        {{food.foodName}}
+                      </h2>
+                      <h2 class="">{{food.foodQty}}</h2>
+                    </div>
+                      
+                      <div class=" card-actions justify-end ">
+                        <div class="badge badge-outline"><div class="flex md:text-xs"><h3 class="mr-4 ">หมวดหมู่: </h3><h3>{{food.foodType}}</h3></div></div>
+                      </div>
+                   
+                  </div>
+              </div>
+          </a>
+      </li>
+  </ul>
+</div>
+
+
+

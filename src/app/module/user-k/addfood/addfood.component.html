@@ -1,0 +1,28 @@
+
+
+
+<div class="pop flex justify-center p-5 bg-white rounded-md"><p>addfood works!</p></div>
+<div class="m-5 ">
+    <form [formGroup]="formfood" (ngSubmit)="Onsubmit()" >
+        <div class="mb-7 form-control ">
+        <label for="foodName">ชื่อ :</label>
+        <input type="text" placeholder="กรุณากรอกชื่อ" formControlName="foodName">
+        <label for="foodQty">จำนวน :</label>
+        <input type="text" placeholder="กรุณากรอกจำนวน" formControlName="foodQty">
+        <label for="promotion">โปโมชั่น :</label>
+       <select name="" id="" formControlName="promotion" >
+        <option value="1">179</option>
+        <option value="2">239</option>
+        <option value="3">ทั้งหมด</option>
+       </select></div>
+        <div class="mb-6">
+        <label for="foodType">ประเภท :</label>
+        <select name="foodType" id="foodType" formControlName="foodType" *ngIf="listfoodtype" >
+        <option *ngFor="let item of listfoodtype" value="{{item.foodType}}">{{item.foodType}}</option>
+        </select></div>
+
+        <label for="">รูปภาพ</label>
+        <input type="file" name="" id="" (change)="Selectfile($event)">
+        <button class="btn btn-success" type="submit" >ยืนยัน</button>
+    </form>
+</div>

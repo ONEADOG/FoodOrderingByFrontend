@@ -1,0 +1,116 @@
+<div class="navbar bg-white sticky top-0">
+  <!-- <div class="navbar-start">
+    <div class="dropdown">
+      <label tabindex="0" class="btn btn-ghost btn-circle">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
+        </svg>
+      </label>
+      <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+        <li><a>Homepage</a></li>
+        <li><a>Portfolio</a></li>
+        <li><a>About</a></li>
+      </ul>
+    </div>
+  </div> -->
+  <div class="navbar-start" >
+    <a routerLink="../table" class="btn btn-ghost normal-case text-xl">Foodorder</a>
+    <div class="flex  ml-1 text-2xl" *ngIf="tabledata">
+      <h2 class="card-title">โต๊ะที่:</h2>
+      {{tabledata.tableName}}
+    </div>
+  </div>
+  <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off"
+    placeholder="🔍 ค้นหาเมนู">
+
+  <div class="navbar-end"*ngIf="tabledata">
+    <!-- <app-searchfood></app-searchfood> -->
+    <a (click)="showorderlist()">
+      <h2 class="btn btn-ghost font-thin">
+        <svg
+        class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+          viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+          <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+          <g id="SVGRepo_iconCarrier">
+            <path
+              d="M18 3.00001V3.00001C19.6569 3.00001 21 4.34315 21 6.00001L21 8.14286C21 8.47698 21 8.64405 20.9234 8.76602C20.8834 8.82962 20.8296 8.8834 20.766 8.92336C20.644 9 20.477 9 20.1429 9L15 9M18 3.00001V3.00001C16.3431 3.00001 15 4.34315 15 6.00001L15 9M18 3.00001L7 3.00001C5.11438 3.00001 4.17157 3.00001 3.58579 3.58579C3 4.17158 3 5.11439 3 7.00001L3 21L6 20L9 21L12 20L15 21L15 9"
+              stroke="#222222"></path>
+            <path d="M7 7L11 7" stroke="#222222" stroke-linecap="round"></path>
+            <path d="M8 11H7" stroke="#222222" stroke-linecap="round"></path>
+            <path d="M7 15L10 15" stroke="#222222" stroke-linecap="round"></path>
+          </g>
+        </svg>รายการที่สั่ง
+      </h2>
+    </a><a routerLink="./menu">
+      <h5 class="btn btn-ghost  font-thin">เมนู</h5>
+    </a>
+    <a *ngIf="tabledata.tableStatus == 2"  routerLink="../payment" class="disabled">
+      <h5 class="btn btn-ghost  font-thin">ชำระค่าบริการ</h5>
+    </a>
+    <button class="btn btn-ghost btn-circle" (click)=" showcart()">
+      <div class="indicator">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+        </svg>
+        <span *ngIf="cartLength >=1" class="w-3  badge badge-xs badge-secondary indicator-item text-white">
+          {{cartLength}}</span>
+      </div>
+    </button>
+  </div>
+</div>
+
+<body>
+
+  <section class="h-96 w-full bg-orange-400">
+    <!-- justify-between items-center ทำให้อยู่ตรงกลางโดยเซ็ต justify ให้ก่อน ค่อยใช้ item center -->
+    <div class="flex justify-between items-center">
+      <h2 class="ml-5 top-44 left-20 ">ยินดีต้อนรับเข้าสู่ระบบของเรา</h2> <img
+        class=" mt-20 mr-28 w-52 h-52  rounded-md shadow-xl"
+        src="assets/image/Food/_2dde70b4-3937-4eeb-8532-2398a6f9b79b.jpg" alt="">
+    </div>
+  </section> <!-- <app-menu></app-menu> -->
+  <!-- <input type="checkbox" class="toggle" checked/> -->
+
+  <div class="flex ml-5 mt-5" style="width: 100%">
+    <h2 class="card-title text-2xl">เมนูที่คุณอาจสนใจ</h2>
+  </div>
+  <!-- <div class=""> <input class="form-control border-end-2 border  " type="search" value="" placeholder="search"
+  id="example-search-input" name="searchText" [(ngModel)]="searchText">
+  <button type="button" class="btn btn-success col-md-3 me-3">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+          fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+          <path
+              d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+      </svg>
+  </button></div> -->
+  <!-- <div class="w-64 h-64"><img [src]="QRCodepayment" alt="image"></div> -->
+  <!-- <a class="btn btn-success " (click)="filter('All')">ทั้งหมด</a><a class="btn btn-success " (click)="filter('เนื้อสัตว์')">เนื้อสัตว์</a> -->
+  <div class="flex-wrap content">
+    <div class="flex cursor-pointer">
+      <div class="card  w-60  shadow-xl  m-5 " *ngFor="let food of filterfood  ">
+        <div (click)=" showdata(food.foodId)" class="  bg-base-100 rounded-md " *ngIf="food.foodStatus == 1">
+          <div class="card-body ">
+            <img class="cursor-pointer rounded-md " src="{{food.foodImage}}" alt="food" />
+            <div class="card-title justify-between">
+              <h2 class="">
+                {{food.foodName}}
+              </h2>
+              <h2>{{food.foodQty}}</h2>
+            </div>
+
+            <div class=" card-actions justify-end ">
+              <div class="badge badge-outline">
+                <div class="flex md:text-xs">
+                  <h3 class="mr-4 ">หมวดหมู่: </h3>
+                  <h3>{{food.foodType}}</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

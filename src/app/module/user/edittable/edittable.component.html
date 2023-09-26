@@ -1,0 +1,8 @@
+<p>edittable works!</p>
+<form [formGroup]="formtable" (ngSubmit)="Onsubmit()" >
+    <label for="tableName">หมายเลขโต๊ะ</label><input type="text" placeholder="tableName" formControlName="tableName">
+    <label for="guestQty">ลูกค้า</label><input type="number" name="" id="" formControlName="guestQty">
+    <label for="promotion">โปรโมชั่น</label><input type="number" name="" id="" placeholder="promotion" formControlName="promotion">
+    <label for="tableStatus">สถานะโต๊ะ</label><select name="" id="" formControlName="tableStatus"><option value="1">ว่าง</option><option value="2">ไม่ว่าง</option></select>
+    <button class="btn btn-success" type="submit">ยืนยัน</button>
+</form>

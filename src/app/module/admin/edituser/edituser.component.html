@@ -1,0 +1,31 @@
+<h1 class="flex justify-center text-center text-xl mt-3">ข้อมูลพนักงาน</h1>
+<div class="m-5 ">
+    <form [formGroup]="formUser" (ngSubmit)="Onsubmit()" >
+        <div class="mb-7 form-control ">
+           <div class="flex justify-center">
+            <img class="shadow-md w-44 mb-9 justify-center items-center" src="{{formUser.get('userImage')?.value}}" alt=""></div>
+        <label >ชื่อ</label>
+        <input type="text" placeholder="กรุณากรอกชื่อ" formControlName="firstName"><br>
+        <label >นามสกุล</label>
+        <input type="text" placeholder="กรุณากรอกนามสกุล" formControlName="lastName"><br>
+        <label >อายุ</label>
+        <input type="number" name="" id="" formControlName="userAge"></div>
+        <div class="mb-6">
+        <label >เบอร์โทร</label>
+        <input type="text" placeholder="กรุณากรอกอายุ" formControlName="userPhone"><br>
+        <label >ตำแหน่ง</label><br>
+        <select name="" id="" formControlName="userType" ><br>
+        <option value="เสิร์ฟ">เสิร์ฟ</option>
+        <option value="ครัว">ครัว</option>
+        </select></div>
+        <label>Username</label><br>
+        <input type="text" name="" id="" formControlName="username"><br>
+        <label >Password</label><br>
+        <input type="text" name="" id="" formControlName="password"><br>
+        <label >รูปภาพ</label><br>
+        <input type="file" name="" id="" (change)="Selectfile($event)"><br>
+        <label >สถานะ</label>
+        <select formControlName="userStatus"><option value="1">ทำงาน</option><option value="2">ไม่ทำงาน</option></select><br>
+        <button class="flex justify-center items-center btn btn-success font-thin text-white mt-8" type="submit" >ยืนยัน</button>
+    </form>
+</div>

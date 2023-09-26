@@ -1,0 +1,28 @@
+
+
+<div class="pop flex justify-center p-5 bg-white rounded-md text-xl"><p>เพิ่มพนักงาน</p></div>
+<div class="m-2 ">
+    <form [formGroup]="formUser" (ngSubmit)="Onsubmit()" >
+        <div class="mb-7 form-control ">
+        <label class="mb-2 mt-3" for="firstName">ชื่อ</label>
+        <input class="input input-bordered input-warning w-full max-w-xs input-xs h-8" type="text" placeholder="กรุณากรอกชื่อ" formControlName="firstName">
+        <label class="mb-2 mt-3"  for="lastName">นามสกุล</label>
+        <input class="input input-bordered input-warning w-full max-w-xs input-xs h-8" type="text" placeholder="กรุณากรอกนามสกุล" formControlName="lastName">
+        <label class="mb-2 mt-3" for="userAge">อายุ</label>
+        <input class="input input-bordered input-warning w-full max-w-xs input-xs h-8" type="number" name="" id="" formControlName="userAge"></div>
+        <div class="mb-6"><label class="mt-3 mb-2" for="userPhone">เบอร์โทร</label><br>
+        <input class="input input-bordered input-warning w-full max-w-xs input-xs h-8" type="text" placeholder="กรุณากรอกอายุ" formControlName="userPhone"><br>
+        <label class="mt-3 mb-2" for="">ตำแหน่ง</label><br>
+        <select class="input input-bordered input-warning w-full max-w-xs input-xs  mb-3 h-8" name="" id="" formControlName="userType"  ><br>
+        <option value="เสิร์ฟ">เสิร์ฟ</option>
+        <option value="ครัว">ครัว</option>
+        </select></div>
+        <label class="mt-3 mb-2" for="username">Username</label><br>
+        <input class="input input-bordered input-warning w-full max-w-xs input-xs h-8 mt-3 mb-2" type="text" name="" id=""  placeholder="Username" formControlName="username"><br>
+        <label class="mt-3 mb-2" for="password">Password</label><br>
+        <input class="input input-bordered input-warning w-full max-w-xs input-xs h-8 mt-3 mb-2" type="text" name="" id=""  placeholder="Password" formControlName="password"><br>
+        <label class="mt-3 mb-3" for="">รูปภาพ</label><br>
+        <input class="file-input file-input-bordered file-input-warning w-full max-w-xs h-10 mt-3 mb-2" type="file" name="" id="" (change)="Selectfile($event)"><br>
+        <button class="btn btn-success mt-5 text-white font-thin" type="submit" >ยืนยัน</button>
+    </form>
+</div>

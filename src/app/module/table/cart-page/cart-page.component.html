@@ -1,0 +1,75 @@
+<!-- <p>cart-page works!</p>
+<div class="navbar bg-base-100">
+    <div class="flex-1">
+        <a class="btn btn-ghost normal-case text-xl">Foodordering</a>
+        <div class=""><a class=""> </a></div>
+    </div>
+
+    <div class="flex-none">
+        <div class="dropdown dropdown-end">
+            <div class="indicator ">
+                <span class="indicator-item indicator-start badge badge-info  font-thin text-base-100 ">1</span>
+                <button class="btn">Cart</button>
+            </div>
+            <div tabindex="0" class="mt-3 z-[1] card card-compact dropdown-content w-52 bg-base-100 shadow">
+                <div class="card-body">
+                    <span class="font-bold text-lg">8 Items</span>
+                    <span class="text-info">Subtotal: $999</span>
+                    <div class="card-actions">
+                        <button class="btn btn-primary btn-block">View cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="dropdown dropdown-end">
+            <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                <li>
+                    <a class="justify-between">
+                        Profile
+                        <span class="badge">New</span>
+                    </a>
+            </ul>
+        </div>
+    </div>
+</div> -->
+<div class="relative card lg:card-side bg-base-100 shadow-xl m-20">
+    <h1 class="font-bold text-3xl ml-2 mt-2  ">ตระกร้า🛒</h1>
+    <div class=" card-body mt-2">
+        <div *ngIf="cart  && cart.items.length >0 ">
+            <ul class="">
+                <li *ngFor="let cartItem of cart.items" class="flex border rounded-md p-2">
+
+                    <h1 class="text-2xl " routerLink="/food/{{cartItem.food.foodId}}">
+                        {{cartItem.food.foodName}}
+                    </h1>
+
+                    <div class="items-center">
+                        <select class=" input border h-5 m-1 " #quantitySelect
+                            (change)="changeQuantity(cartItem,quantitySelect.value)">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                            <option>9</option>
+                            <option>10</option>
+
+                        </select>
+                    </div>
+                    <div class="flex items-center ">
+                        <button class="btn btn-error btn-xs text-base-100 " (click)="removeFromCart(cartItem)">
+                            Remove </button>
+                    </div>
+                </li>
+            </ul>
+            <div class="text-end  py-1 px-1 "> จำนวนอาหาร : {{cart.items.length}}</div>
+            <div class="card-actions justify-end" *ngIf="cart.items.length >= 1">
+
+            </div>
+            <div class=""> <button class="btn btn-success  text-3xl text-white shadow-xl">สั่ง</button>
+            </div>
+        </div>
+    </div>
